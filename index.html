@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,648 +7,612 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HR Labor Law Compliance Guide 2025 | IICP</title>
     <style>
-        /* Page Setup for PDF */
+        /* ================= GLOBAL STYLES ================= */
         @page {
             size: A4;
-            margin: 1.5cm;
+            margin: 10mm; /* Narrower margin for more content space */
         }
         
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #2c3e50;
             background-color: #fff;
             margin: 0;
-            padding: 0;
+            padding: 20px;
+            -webkit-print-color-adjust: exact; /* Ensures colors print correctly */
+            print-color-adjust: exact;
         }
-        
-        /* Page Break for PDF */
+
+        /* Helper for PDF generation */
         .page-break {
             page-break-after: always;
-            break-after: page;
+            display: block;
+            height: 0;
+            margin: 0;
         }
-        
-        /* Header Styles */
+
+        /* ================= HEADERS & FOOTERS ================= */
         .header {
             display: flex;
             align-items: center;
             border-bottom: 3px solid #1a4a8f;
             padding-bottom: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
-        
-        .logo-container {
-            flex: 0 0 auto;
-        }
-        
+
         .logo {
-            height: 70px;
+            height: 65px;
             width: auto;
+            margin-right: 20px;
         }
-        
-        .header-content {
-            flex: 1;
-            margin-left: 20px;
-        }
-        
+
         .institute-name {
             color: #1a4a8f;
-            font-size: 28px;
-            font-weight: 700;
-            margin: 0 0 5px 0;
+            font-size: 26px;
+            font-weight: 800;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        
+
         .tagline {
             color: #e63946;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
-            margin: 0;
+            margin: 2px 0 0 0;
         }
-        
-        /* Main Content */
+
+        .footer {
+            text-align: center;
+            font-size: 11px;
+            color: #7f8c8d;
+            border-top: 1px solid #bdc3c7;
+            padding-top: 15px;
+            margin-top: auto;
+            position: relative;
+            bottom: 0;
+        }
+
+        .page-number {
+            text-align: right;
+            font-size: 11px;
+            color: #95a5a6;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* ================= TYPOGRAPHY ================= */
         .main-title {
             text-align: center;
             color: #1a4a8f;
-            font-size: 24px;
-            margin: 20px 0;
+            font-size: 26px;
+            margin: 15px 0;
             padding: 10px;
             border-bottom: 2px solid #e63946;
+            background: #f8f9fa;
         }
-        
-        .subtitle {
-            color: #2a5caa;
+
+        .section-title {
+            color: #2c3e50;
             font-size: 18px;
+            font-weight: 700;
             margin: 25px 0 15px 0;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #ddd;
+            padding-left: 10px;
+            border-left: 5px solid #e63946;
+            background: linear-gradient(90deg, #fdfbfb 0%, #ebedee 100%);
+            padding: 8px 15px;
         }
-        
-        /* Tables */
+
+        /* ================= TABLES ================= */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 13px;
+            margin: 15px 0;
+            font-size: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        
+
         th {
             background-color: #1a4a8f;
             color: white;
             text-align: left;
-            padding: 10px;
+            padding: 12px;
             font-weight: 600;
+            text-transform: uppercase;
+            font-size: 11px;
         }
-        
+
         td {
-            padding: 10px;
-            border: 1px solid #ddd;
+            padding: 10px 12px;
+            border: 1px solid #e0e0e0;
+            vertical-align: top;
         }
-        
-        tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        
-        /* Lists */
-        ul {
+
+        tr:nth-child(even) { background-color: #f8f9fa; }
+        tr:hover { background-color: #f1f1f1; }
+
+        /* ================= BOXES & ALERTS ================= */
+        .box {
+            padding: 15px;
             margin: 15px 0;
-            padding-left: 20px;
+            border-radius: 6px;
+            font-size: 13px;
         }
-        
-        li {
-            margin-bottom: 8px;
-        }
-        
-        /* Boxes and Highlights */
-        .highlight-box {
-            background-color: #f0f7ff;
+
+        .box-info {
+            background-color: #eef5ff;
             border-left: 4px solid #1a4a8f;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 5px 5px 0;
         }
-        
-        .warning-box {
-            background-color: #fff4e6;
+
+        .box-warning {
+            background-color: #fff9e6;
+            border-left: 4px solid #f1c40f;
+        }
+
+        .box-alert {
+            background-color: #fff0f0;
             border-left: 4px solid #e63946;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 5px 5px 0;
         }
-        
-        /* Contact Section */
-        .contact-section {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 30px 0;
+
+        /* ================= ADVERTISEMENT SECTION (REDESIGNED) ================= */
+        .ad-container {
+            margin-top: 30px;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            border-radius: 15px;
+            padding: 30px;
+            color: white;
             text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
         }
-        
-        .contact-title {
-            color: #1a4a8f;
-            font-size: 18px;
-            margin-bottom: 15px;
+
+        /* Decorative circles */
+        .ad-container::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
         }
-        
-        .contact-details {
+
+        .ad-header {
+            margin-bottom: 25px;
+        }
+
+        .ad-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: #ffffff;
+        }
+
+        .ad-subtitle {
+            font-size: 16px;
+            color: #a8d0e6;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .ad-grid {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
             flex-wrap: wrap;
-            gap: 20px;
         }
-        
-        .contact-item {
-            text-align: center;
+
+        .ad-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 140px;
+            max-width: 200px;
         }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            font-size: 12px;
-            color: #666;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
+
+        .ad-card h4 { margin: 0 0 5px 0; color: #f1c40f; font-size: 14px; text-transform: uppercase; }
+        .ad-card p { margin: 0; font-size: 18px; font-weight: bold; }
+
+        .ad-cta-button {
+            display: inline-block;
+            background: #e63946; /* Red for urgency */
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            border: 2px solid white;
         }
-        
-        /* Page Specific */
-        .page-number {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 12px;
-            color: #999;
+
+        .ad-cta-button:hover {
+            background: #fff;
+            color: #e63946;
         }
-        
-        /* Colors for Categories */
-        .compliance-monthly { border-left: 4px solid #4CAF50; }
-        .compliance-quarterly { border-left: 4px solid #FF9800; }
-        .compliance-annual { border-left: 4px solid #2196F3; }
-        .compliance-registers { border-left: 4px solid #9C27B0; }
-        .compliance-docs { border-left: 4px solid #607D8B; }
+
+        .limited-tag {
+            background: #f1c40f;
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        /* ================= LISTS ================= */
+        ul.checklist { list-style: none; padding: 0; }
+        ul.checklist li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        ul.checklist li::before {
+            content: '✓';
+            color: #27ae60;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Page 1 -->
     <div class="header">
-        <div class="logo-container">
-            <img src="https://www.iicp.in/assets/img/logo.webp" alt="IICP Logo" class="logo">
-        </div>
-        <div class="header-content">
+        <img src="https://www.iicp.in/assets/img/logo.webp" alt="IICP Logo" class="logo">
+        <div>
             <h1 class="institute-name">Industry Integrated Career Platform</h1>
             <p class="tagline">Empowering Professionals with Industry-Relevant Skills</p>
         </div>
     </div>
-    
+
     <h1 class="main-title">HR Labor Law Compliance Checklist 2025</h1>
-    <p style="text-align: center; color: #555; margin-bottom: 30px;"><strong>For Indian Companies with 10+ Employees</strong></p>
-    
-    <div class="highlight-box">
+    <p style="text-align: center; color: #555; margin-bottom: 20px;"><strong>Applicable for Indian Companies with 10+ Employees</strong></p>
+
+    <div class="box box-info">
         <h3 style="margin-top: 0; color: #1a4a8f;">📋 About This Guide</h3>
-        <p>This comprehensive checklist is designed for HR professionals, business owners, and students pursuing careers in Human Resources Management. It covers all essential compliance requirements under Indian labor laws for organizations with 10 or more employees.</p>
-        <p><strong>Last Updated:</strong> December 2024 | <strong>Validity:</strong> Financial Year 2024-25</p>
+        <p>This comprehensive checklist covers the essential statutory compliance requirements under Indian labor laws (EPF, ESI, TDS, POSH, etc.) for the Financial Year 2024-25. It is updated to reflect the latest digital filing procedures.</p>
     </div>
-    
-    <div class="subtitle">🎯 Why Compliance Matters</div>
-    <ul>
-        <li><strong>Legal Protection:</strong> Avoid penalties, legal disputes, and imprisonment</li>
-        <li><strong>Employee Trust:</strong> Build confidence through transparent compliance</li>
-        <li><strong>Business Continuity:</strong> Prevent operational disruptions due to non-compliance</li>
-        <li><strong>Reputation Management:</strong> Maintain positive brand image as a compliant employer</li>
-        <li><strong>Financial Planning:</strong> Accurate budgeting for statutory payouts</li>
+
+    <div class="section-title">🎯 Why Compliance is Non-Negotiable</div>
+    <ul class="checklist">
+        <li><strong>Avoid Prosecution:</strong> Directors can face arrest warrants for non-payment of PF/ESI.</li>
+        <li><strong>Financial Safety:</strong> Avoid damages (up to 25% of arrears) and high interest rates.</li>
+        <li><strong>Brand Reputation:</strong> "Clean" companies attract better talent and investors.</li>
+        <li><strong>Operational Continuity:</strong> Prevent bank account freezing by PF/ESI/Tax authorities.</li>
     </ul>
-    
-    <div class="warning-box">
-        <h4 style="margin-top: 0; color: #e63946;">⚠️ Important Disclaimer</h4>
-        <p>This guide is for educational purposes only. While we strive for accuracy, laws may change. Always consult with a qualified legal professional or refer to official government portals for the most current information.</p>
+
+    <div class="box box-warning">
+        <h4 style="margin-top: 0; color: #d35400;">⚠️ Disclaimer</h4>
+        <p>Laws such as the 4 Labour Codes are in a transitional phase. This guide represents the current enforcement status as of Dec 2025. Always consult a legal expert before statutory filings.</p>
     </div>
-    
-    <div class="contact-section">
-        <div class="contact-title">Need Professional Guidance?</div>
-        <div class="contact-details">
-            <div class="contact-item">
-                <strong>📞 Phone Support</strong><br>
-                +91-87-939-333-47
-            </div>
-            <div class="contact-item">
-                <strong>📧 Email Support</strong><br>
-                info@iicp.in
-            </div>
-            <div class="contact-item">
-                <strong>🌐 Digital Platform</strong><br>
-                www.iicp.in
-            </div>
-        </div>
+
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center; margin-top: 40px;">
+        <h3 style="color: #1a4a8f; margin: 0 0 10px 0;">Need Immediate Compliance Help?</h3>
+        <p style="margin: 5px;">📞 <strong>+91-87-939-333-47</strong> | 📧 <strong>info@iicp.in</strong></p>
     </div>
-    
-    <div class="page-number">Page 1 of 5</div>
+
+    <div class="footer">
+        Page 1 of 5 | © 2025 Industry Integrated Career Platform (IICP)
+    </div>
     <div class="page-break"></div>
 
-    <!-- Page 2 -->
     <div class="header">
-        <div class="logo-container">
-            <img src="https://www.iicp.in/assets/img/logo.webp" alt="IICP Logo" class="logo">
-        </div>
-        <div class="header-content">
+        <img src="https://www.iicp.in/assets/img/logo.webp" alt="Logo" class="logo">
+        <div>
             <h1 class="institute-name">Industry Integrated Career Platform</h1>
             <p class="tagline">Comprehensive HR Compliance Guide</p>
         </div>
     </div>
-    
-    <h2 class="main-title">Part 1: Monthly Compliance Checklist</h2>
-    
+
+    <h2 class="section-title">Part 1: Monthly Compliance Checklist (Recurring)</h2>
+
     <table>
         <thead>
             <tr>
-                <th width="25%">Compliance Area</th>
-                <th width="20%">Due Date</th>
-                <th width="25%">Document Required</th>
-                <th width="30%">Penalty for Non-Compliance</th>
+                <th width="20%">Act / Authority</th>
+                <th width="15%">Due Date</th>
+                <th width="25%">Form / Process</th>
+                <th width="40%">Penalty for Default</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><strong>Employees' Provident Fund (PF)</strong></td>
-                <td>15th of each month</td>
-                <td>ECR (Electronic Challan cum Return), Challan</td>
-                <td>₹1,000/month + 12% interest per annum on delayed payments</td>
+                <td><strong>PF (EPFO)</strong></td>
+                <td>15th of Month</td>
+                <td><strong>ECR Filing</strong><br>(Electronic Challan cum Return)</td>
+                <td><strong>Damages:</strong> 5% to 25% of arrears (Sec 14B)<br>+ <strong>Interest:</strong> 12% p.a. (Sec 7Q)</td>
             </tr>
             <tr>
-                <td><strong>Employees' State Insurance (ESI)</strong></td>
-                <td>15th of each month</td>
-                <td>ESIC Return, Contribution Sheet</td>
-                <td>Up to ₹18,000 fine + imprisonment up to 2 years</td>
+                <td><strong>ESI (ESIC)</strong></td>
+                <td>15th of Month</td>
+                <td><strong>Online Contribution</strong><br>(ESIC Portal)</td>
+                <td>Damages up to 25% + 12% Interest.<br>Potential prosecution under Sec 85.</td>
             </tr>
             <tr>
-                <td><strong>Professional Tax (PT)</strong></td>
-                <td>State-specific (Usually 15th-25th)</td>
-                <td>PT Challan, Monthly Return</td>
-                <td>As per State Act (Fines + interest on delay)</td>
+                <td><strong>TDS (Income Tax)</strong></td>
+                <td>7th of Next Month</td>
+                <td><strong>Challan 281</strong><br>(Payment of Tax Deducted)</td>
+                <td>Interest @ 1.5% per month.<br>Penalty equal to tax amount (rare but possible).</td>
             </tr>
             <tr>
-                <td><strong>TDS on Salary</strong></td>
-                <td>7th of next month</td>
-                <td>Form 24Q, Challan 281</td>
-                <td>Interest @1% per month + penalty under Income Tax Act</td>
-            </tr>
-            <tr>
-                <td><strong>LWF (Labour Welfare Fund)</strong></td>
-                <td>State-specific dates</td>
-                <td>LWF Challan, Return</td>
-                <td>As per State Welfare Fund Act</td>
+                <td><strong>Prof. Tax (PT)</strong></td>
+                <td>State Specific<br>(Usually 15th-25th)</td>
+                <td><strong>Monthly Return</strong><br>(e.g., Form II in Maharashtra)</td>
+                <td>Varies by State.<br>(e.g., 10% - 25% of tax amount + Interest)</td>
             </tr>
         </tbody>
     </table>
-    
-    <div class="highlight-box compliance-monthly">
-        <h4>📝 Monthly Compliance Best Practices</h4>
-        <ol>
-            <li><strong>Calendar Alerts:</strong> Set reminders 3 days before each due date</li>
-            <li><strong>Document Preparation:</strong> Prepare challans and returns in advance</li>
-            <li><strong>Reconciliation:</strong> Match employee contributions with company records</li>
-            <li><strong>Payment Tracking:</strong> Maintain payment acknowledgment records</li>
-            <li><strong>Team Coordination:</strong> Ensure payroll, finance, and HR are aligned</li>
+
+    <div class="box box-info">
+        <h4 style="margin: 0 0 10px 0;">🔄 Optimized Monthly Workflow (The 3-Phase Cycle)</h4>
+        <ol style="margin: 0; padding-left: 20px;">
+            <li><strong>Phase 1 (1st - 5th): Input Validation</strong>
+                <ul>
+                    <li>Freeze Attendance & Leaves.</li>
+                    <li>Collect Investment Proofs (for TDS) if applicable.</li>
+                </ul>
+            </li>
+            <li><strong>Phase 2 (6th - 10th): Processing & Payment</strong>
+                <ul>
+                    <li>Process Payroll.</li>
+                    <li>Pay TDS (by 7th).</li>
+                    <li>Generate PF/ESI Challans.</li>
+                </ul>
+            </li>
+            <li><strong>Phase 3 (11th - 15th): Filing</strong>
+                <ul>
+                    <li>Pay PF/ESI Challans.</li>
+                    <li>File PT Returns.</li>
+                    <li>Share payslips with employees.</li>
+                </ul>
+            </li>
         </ol>
     </div>
-    
-    <div class="subtitle">🔄 Monthly Workflow Process</div>
-    <ol>
-        <li>Run payroll calculations (1st-5th of month)</li>
-        <li>Prepare salary slips and contribution sheets (5th-7th)</li>
-        <li>Calculate statutory deductions (PF, ESI, PT, TDS) (7th-10th)</li>
-        <li>Generate challans and make payments (10th-14th)</li>
-        <li>File returns online (14th-15th)</li>
-        <li>Maintain acknowledgment records (15th-17th)</li>
-    </ol>
-    
-    <div class="page-number">Page 2 of 5</div>
-    <div class="page-break"></div>
 
-    <!-- Page 3 -->
-    <div class="header">
-        <div class="logo-container">
-            <img src="https://www.iicp.in/assets/img/logo.webp" alt="IICP Logo" class="logo">
-        </div>
-        <div class="header-content">
-            <h1 class="institute-name">Industry Integrated Career Platform</h1>
-            <p class="tagline">Comprehensive HR Compliance Guide</p>
-        </div>
-    </div>
-    
-    <h2 class="main-title">Part 2: Quarterly & Part 3: Annual Compliance</h2>
-    
-    <div class="subtitle">📅 Quarterly Compliance Checklist</div>
-    <table>
-        <thead>
-            <tr>
-                <th width="30%">Compliance</th>
-                <th width="25%">Due Dates</th>
-                <th width="20%">Form</th>
-                <th width="25%">Authority</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>ESI Half-Yearly Return</strong></td>
-                <td>11 April & 11 October</td>
-                <td>Form 6</td>
-                <td>ESIC (Employees' State Insurance Corporation)</td>
-            </tr>
-            <tr>
-                <td><strong>Shops & Establishment Return</strong></td>
-                <td>Quarterly (State-specific)</td>
-                <td>Form K / Annual Return</td>
-                <td>State Labour Department</td>
-            </tr>
-            <tr>
-                <td><strong>Contract Labour Return</strong></td>
-                <td>Jan / Apr / Jul / Oct</td>
-                <td>Form XXIV</td>
-                <td>Licensing Authority / Labour Dept</td>
-            </tr>
-            <tr>
-                <td><strong>Gratuity Statement</strong> (if applicable)</td>
-                <td>Quarterly</td>
-                <td>Form N / Register</td>
-                <td>Labour Department</td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <div class="subtitle">📊 Annual Compliance Checklist</div>
-    <table>
-        <thead>
-            <tr>
-                <th width="30%">Compliance</th>
-                <th width="20%">Due Date</th>
-                <th width="25%">Forms</th>
-                <th width="25%">Importance</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Annual PF Return</strong></td>
-                <td>25 April</td>
-                <td>Form 3A, Form 6A, Form 12A</td>
-                <td>Mandatory for EPFO compliance</td>
-            </tr>
-            <tr>
-                <td><strong>ESI Annual Return</strong></td>
-                <td>31 May</td>
-                <td>Form 8, Form 01</td>
-                <td>Employee benefits continuation</td>
-            </tr>
-            <tr>
-                <td><strong>Gratuity & Bonus Calculation</strong></td>
-                <td>Year end / Before Diwali</td>
-                <td>Form I / Bonus Sheet</td>
-                <td>Statutory payout to employees</td>
-            </tr>
-            <tr>
-                <td><strong>Income Tax Returns</strong> (Company)</td>
-                <td>30 September / 31 October</td>
-                <td>ITR-6, Audit Reports</td>
-                <td>Mandatory under Income Tax Act</td>
-            </tr>
-            <tr>
-                <td><strong>Minimum Wages Return</strong></td>
-                <td>31 January</td>
-                <td>Form IV</td>
-                <td>Compliance with Minimum Wages Act</td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <div class="highlight-box compliance-annual">
-        <h4>📌 Annual Compliance Timeline</h4>
-        <ul>
-            <li><strong>January:</strong> Prepare for financial year closure</li>
-            <li><strong>February-March:</strong> Gratuity & bonus calculations</li>
-            <li><strong>April:</strong> File annual PF returns (by 25th)</li>
-            <li><strong>May:</strong> File ESI annual return (by 31st)</li>
-            <li><strong>June-July:</strong> Half-yearly reviews and audits</li>
-            <li><strong>September-October:</strong> Income tax filing</li>
-            <li><strong>November-December:</strong> Plan for next year updates</li>
-        </ul>
-    </div>
-    
-    <div class="page-number">Page 3 of 5</div>
-    <div class="page-break"></div>
-
-    <!-- Page 4 -->
-    <div class="header">
-        <div class="logo-container">
-            <img src="https://www.iicp.in/assets/img/logo.webp" alt="IICP Logo" class="logo">
-        </div>
-        <div class="header-content">
-            <h1 class="institute-name">Industry Integrated Career Platform</h1>
-            <p class="tagline">Comprehensive HR Compliance Guide</p>
-        </div>
-    </div>
-    
-    <h2 class="main-title">Part 4: Statutory Registers & Part 5: Employee Documentation</h2>
-    
-    <div class="subtitle">📚 Mandatory Statutory Registers (Under Various Acts)</div>
-    
-    <div class="highlight-box compliance-registers">
-        <h4>1. Register of Wages</h4>
-        <p><strong>Acts:</strong> Payment of Wages Act, Minimum Wages Act<br>
-        <strong>Contents:</strong> Employee details, wage periods, deductions, net wages paid<br>
-        <strong>Retention:</strong> 3 years after last entry</p>
-    </div>
-    
-    <div class="highlight-box compliance-registers">
-        <h4>2. Master Roll / Attendance Register</h4>
-        <p><strong>Acts:</strong> Factories Act, Shops & Establishments Act<br>
-        <strong>Contents:</strong> Daily attendance, overtime hours, weekly offs<br>
-        <strong>Retention:</strong> 3 years minimum</p>
-    </div>
-    
-    <div class="highlight-box compliance-registers">
-        <h4>3. Leave & Overtime Register</h4>
-        <p><strong>Acts:</strong> Factories Act, State Shops Acts<br>
-        <strong>Contents:</strong> Leave applied, granted, balance; Overtime calculations<br>
-        <strong>Retention:</strong> 3 years minimum</p>
-    </div>
-    
-    <div class="highlight-box compliance-registers">
-        <h4>4. Accident Register</h4>
-        <p><strong>Act:</strong> Factories Act, Workmen Compensation Act<br>
-        <strong>Contents:</strong> Details of workplace accidents, treatment, compensation<br>
-        <strong>Retention:</strong> 5 years minimum</p>
-    </div>
-    
-    <div class="highlight-box compliance-registers">
-        <h4>5. ESI & PF Contribution Records</h4>
-        <p><strong>Acts:</strong> ESI Act, EPF Act<br>
-        <strong>Contents:</strong> Monthly contributions, challan details, returns<br>
-        <strong>Retention:</strong> 6 years minimum</p>
-    </div>
-    
-    <div class="subtitle">📄 Essential Employee Documentation</div>
-    <table>
-        <thead>
-            <tr>
-                <th width="25%">Document</th>
-                <th width="20%">When Required</th>
-                <th width="25%">Legal Basis</th>
-                <th width="30%">Key Contents</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Appointment Letter</strong></td>
-                <td>Before joining / On joining</td>
-                <td>Standing Orders, Contract Law</td>
-                <td>Role, compensation, terms, probation, notice period</td>
-            </tr>
-            <tr>
-                <td><strong>Salary Slip</strong></td>
-                <td>Monthly with salary</td>
-                <td>Payment of Wages Act</td>
-                <td>Earnings, deductions, net pay, leave balance</td>
-            </tr>
-            <tr>
-                <td><strong>Form 16</strong></td>
-                <td>Annually (by 15 June)</td>
-                <td>Income Tax Act</td>
-                <td>Annual salary, TDS details, PAN, employer details</td>
-            </tr>
-            <tr>
-                <td><strong>Experience Letter</strong></td>
-                <td>On resignation/termination</td>
-                <td>Industry Practice</td>
-                <td>Service period, designation, performance</td>
-            </tr>
-            <tr>
-                <td><strong>Increment Letter</strong></td>
-                <td>After salary revision</td>
-                <td>Employment Contract</td>
-                <td>Revised salary, effective date, new components</td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <div class="page-number">Page 4 of 5</div>
-    <div class="page-break"></div>
-
-    <!-- Page 5 -->
-    <div class="header">
-        <div class="logo-container">
-            <img src="https://www.iicp.in/assets/img/logo.webp" alt="IICP Logo" class="logo">
-        </div>
-        <div class="header-content">
-            <h1 class="institute-name">Industry Integrated Career Platform</h1>
-            <p class="tagline">Comprehensive HR Compliance Guide</p>
-        </div>
-    </div>
-    
-    <h2 class="main-title">Part 6: 2024-25 Key Updates & Career Opportunities</h2>
-    
-    <div class="subtitle">🚨 Major Labour Law Updates for 2024-25</div>
-    
-    <div class="highlight-box">
-        <h4>1. Wage Code Implementation</h4>
-        <p><strong>Change:</strong> Basic pay must be minimum 50% of CTC (Cost to Company)<br>
-        <strong>Impact:</strong> Higher PF contributions, increased gratuity calculations<br>
-        <strong>Action Required:</strong> Restructure salary components in appointment letters</p>
-    </div>
-    
-    <div class="highlight-box">
-        <h4>2. ESI Coverage Expansion</h4>
-        <p><strong>Change:</strong> Coverage increased up to ₹21,000 monthly wages (from ₹15,000)<br>
-        <strong>Impact:</strong> More employees eligible for ESI benefits<br>
-        <strong>Action Required:</strong> Review employee eligibility and register newly eligible staff</p>
-    </div>
-    
-    <div class="highlight-box">
-        <h4>3. PF Auto-Transfer via UAN</h4>
-        <p><strong>Change:</strong> Form 13 removed; seamless transfer via UAN portal<br>
-        <strong>Impact:</strong> Faster PF transfers when changing jobs<br>
-        <strong>Action Required:</strong> Ensure all employees have activated UAN</p>
-    </div>
-    
-    <div class="highlight-box">
-        <h4>4. Implementation of 4 Labour Codes</h4>
-        <p><strong>Codes:</strong> Wage Code, Industrial Relations Code, Social Security Code, OSH Code<br>
-        <strong>Status:</strong> Phased implementation across states<br>
-        <strong>Action Required:</strong> Stay updated on state notifications and prepare for changes</p>
-    </div>
-    
-<!-- ========== COURSE ADVERTISEMENT BANNER ========== -->
-<div class="course-ad-banner" style="background: linear-gradient(135deg, #1a4a8f 0%, #2a5caa 100%); color: white; padding: 30px; border-radius: 15px; margin: 40px 0; text-align: center;">
-    
-    <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 10px; margin-bottom: 20px;">
-        <h2 style="margin: 0 0 10px 0; color: white; font-size: 28px;">🏛️ Professional Certificate in Labour Law Compliance (PCLLC)</h2>
-        <p style="font-size: 18px; margin: 0; opacity: 0.9;">Master Workplace Legal Frameworks | 100% Digital Learning</p>
-    </div>
-    
-    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin: 25px 0;">
-        <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; min-width: 200px;">
-            <div style="font-size: 14px; opacity: 0.8;">Duration</div>
-            <div style="font-size: 20px; font-weight: bold;">2-3 Months</div>
-            <div style="font-size: 14px;">Self-Paced</div>
-        </div>
-        
-        <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; min-width: 200px;">
-            <div style="font-size: 14px; opacity: 0.8;">Mode</div>
-            <div style="font-size: 20px; font-weight: bold;">100% Online</div>
-            <div style="font-size: 14px;">Digital Learning</div>
-        </div>
-        
-        <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; min-width: 200px;">
-            <div style="font-size: 14px; opacity: 0.8;">Fees</div>
-            <div style="font-size: 20px; font-weight: bold;">₹7,500</div>
-            <div style="font-size: 14px;">Special Discounts Available</div>
-        </div>
-    </div>
-    
-    <div style="background: #e63946; color: white; padding: 10px 30px; border-radius: 30px; display: inline-block; font-weight: bold; font-size: 18px; margin: 15px 0;">
-        ⭐ Industry-Recognized Certification ⭐
-    </div>
-    
-    <div style="margin: 25px 0;">
-        <a href="https://wa.me/918793933347?text=I'm%20interested%20in%20PCLLC%20Course" 
-           style="background: white; color: #1a4a8f; padding: 15px 40px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 18px; display: inline-block; margin: 10px;">
-            📱 WhatsApp "COURSE" for Details
-        </a>
-    </div>
-    
-    <p style="font-size: 14px; opacity: 0.8; margin: 15px 0 0 0;">
-        Limited Seats Available | Next Batch Starting Soon
-    </p>
-</div>
-    
-    <div class="contact-section">
-        <div class="contact-title">Connect with IICP for Career Growth</div>
-        <div class="contact-details">
-            <div class="contact-item">
-                <strong>📞 Professional Guidance</strong><br>
-                +91-87-939-333-47<br>
-                Mon-Sat, 10 AM - 6 PM
-            </div>
-            <div class="contact-item">
-                <strong>📧 Email Support</strong><br>
-                info@iicp.in<br>
-                Response within 24 hours
-            </div>
-            <div class="contact-item">
-                <strong>🌐 Digital Platform</strong><br>
-                www.iicp.in<br>
-                Courses | Webinars | Resources
-            </div>
-        </div>
-    </div>
-    
     <div class="footer">
-        <p>© 2025 Industry Integrated Career Platform (IICP). All rights reserved.</p>
-        <p><strong>Confidential – For Educational Use | Not for Commercial Distribution</strong></p>
-        <p>This document is intended for HR students and professionals for learning purposes.</p>
-        <p>While every effort has been made to ensure accuracy, readers should verify information from official sources.</p>
+        Page 2 of 5 | © 2025 Industry Integrated Career Platform (IICP)
     </div>
+    <div class="page-break"></div>
+
+    <div class="header">
+        <img src="https://www.iicp.in/assets/img/logo.webp" alt="Logo" class="logo">
+        <div>
+            <h1 class="institute-name">Industry Integrated Career Platform</h1>
+            <p class="tagline">Comprehensive HR Compliance Guide</p>
+        </div>
+    </div>
+
+    <h2 class="section-title">Part 2: Quarterly & Half-Yearly Compliance</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Compliance</th>
+                <th>Due Date</th>
+                <th>Action / Form</th>
+                <th>Remarks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>TDS Return (Salary)</strong></td>
+                <td>31st Jul / Oct / Jan / May</td>
+                <td><strong>Form 24Q</strong></td>
+                <td>Late fee ₹200/day under Sec 234E.</td>
+            </tr>
+            <tr>
+                <td><strong>ESI Return</strong></td>
+                <td>11th May & 11th Nov</td>
+                <td><strong>RC-II (Monthly Contribution History)</strong></td>
+                <td>Verify contribution history on ESIC Portal.</td>
+            </tr>
+            <tr>
+                <td><strong>Labour Welfare Fund</strong></td>
+                <td>Jun / Dec (State wise)</td>
+                <td><strong>LWF Form</strong></td>
+                <td>Compulsory for states like Maharashtra, Delhi, Haryana.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 class="section-title">Part 3: Annual Compliance (Critical)</h2>
+    <p style="font-size: 12px; color: #666;"><em>Note: Paper forms (3A/6A) are obsolete. Compliance is now largely digital.</em></p>
+    <table>
+        <thead>
+            <tr>
+                <th width="30%">Compliance Area</th>
+                <th width="20%">Due Date</th>
+                <th width="50%">Required Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>POSH Act (Sexual Harassment)</strong></td>
+                <td><strong>31st January</strong></td>
+                <td>Submit <strong>Annual Report</strong> to the District Officer (DO). Mandatory for 10+ employees.</td>
+            </tr>
+            <tr>
+                <td><strong>Bonus Act</strong></td>
+                <td><strong>30th November</strong></td>
+                <td>Payment of Statutory Bonus (Form C) & filing of Annual Return (Form D).</td>
+            </tr>
+            <tr>
+                <td><strong>Form 16 (TDS)</strong></td>
+                <td><strong>15th June</strong></td>
+                <td>Issue Part A & Part B certificates to employees downloaded from TRACES.</td>
+            </tr>
+            <tr>
+                <td><strong>Factory/Shop License</strong></td>
+                <td><strong>Oct - Dec</strong></td>
+                <td>Renewal of Shop & Establishment License (if state requires annual renewal).</td>
+            </tr>
+            <tr>
+                <td><strong>Professional Tax</strong></td>
+                <td><strong>Variable</strong></td>
+                <td>File Annual Information Return (in applicable states).</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="box box-alert">
+        <strong>⚠️ Crucial End-of-Year Activity (March):</strong> Ensure all employee PF KYC (Aadhaar/PAN) is seeded. Mismatch in names leads to claim rejections.
+    </div>
+
+    <div class="footer">
+        Page 3 of 5 | © 2025 Industry Integrated Career Platform (IICP)
+    </div>
+    <div class="page-break"></div>
+
+    <div class="header">
+        <img src="https://www.iicp.in/assets/img/logo.webp" alt="Logo" class="logo">
+        <div>
+            <h1 class="institute-name">Industry Integrated Career Platform</h1>
+            <p class="tagline">Comprehensive HR Compliance Guide</p>
+        </div>
+    </div>
+
+    <h2 class="section-title">Part 4: Statutory Registers (Digital Ready)</h2>
+    <div class="box box-info">
+        <strong>💡 Pro Tip: Ease of Compliance Rules</strong><br>
+        Under the new "Ease of Compliance" notifications, you do not need separate physical registers for every act. You can maintain <strong>Combined Digital Registers</strong> (Formats A, B, C, D, E).
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="30%">Register Name</th>
+                <th width="40%">Format / Content</th>
+                <th width="30%">Retention Period</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Employee Register</strong></td>
+                <td><strong>Format A</strong><br>(Contains basic employee details, joining, designation)</td>
+                <td>3 Years</td>
+            </tr>
+            <tr>
+                <td><strong>Wage Register</strong></td>
+                <td><strong>Format B</strong><br>(Wage rate, attendance, deductions, net pay)</td>
+                <td>3 Years</td>
+            </tr>
+            <tr>
+                <td><strong>Register of Loans/Recoveries</strong></td>
+                <td><strong>Format C</strong><br>(Details of damages, fines, advances)</td>
+                <td>3 Years</td>
+            </tr>
+            <tr>
+                <td><strong>Attendance Register</strong></td>
+                <td><strong>Format D</strong><br>(In/Out time, OT hours - Electronic Logs accepted)</td>
+                <td>3 Years</td>
+            </tr>
+            <tr>
+                <td><strong>Inspection Book</strong></td>
+                <td>Physical/Digital Log</td>
+                <td>Indefinite</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 class="section-title">Part 5: Essential Employee Documentation</h2>
+    <ul class="checklist">
+        <li><strong>Appointment Letter:</strong> Must clearly break down Salary (Basic < 50% CTC Check).</li>
+        <li><strong>Form 11 (EPF):</strong> Declaration by employee at joining (New/Existing member).</li>
+        <li><strong>Form 2 (Nomination):</strong> For PF and Gratuity nomination.</li>
+        <li><strong>Aadhaar Card:</strong> Mandatory for PF UAN generation.</li>
+        <li><strong>Exit Interview Form:</strong> Documentation for full & final settlement.</li>
+    </ul>
+
+    <div class="footer">
+        Page 4 of 5 | © 2025 Industry Integrated Career Platform (IICP)
+    </div>
+    <div class="page-break"></div>
+
+    <div class="header">
+        <img src="https://www.iicp.in/assets/img/logo.webp" alt="Logo" class="logo">
+        <div>
+            <h1 class="institute-name">Industry Integrated Career Platform</h1>
+            <p class="tagline">Comprehensive HR Compliance Guide</p>
+        </div>
+    </div>
+
+    <h2 class="section-title">Part 6: Critical Legal Updates (2025)</h2>
     
-    <div class="page-number">Page 5 of 5</div>
+    <div class="box box-warning">
+        <h4 style="margin-top:0;">1. The "50% CTC" Rule (Code on Wages)</h4>
+        <p><strong>The Rule:</strong> Allowances cannot exceed 50% of the Total CTC. Basic Pay must be at least 50%.<br>
+        <strong>Impact:</strong> If your Basic is low, you must increase it. This increases the PF liability for both employer and employee.</p>
+    </div>
+
+    <div class="box box-info">
+        <h4 style="margin-top:0;">2. Aadhaar-UAN Linking Mandatory</h4>
+        <p>Employers can no longer file ECR (PF Return) for employees whose Aadhaar is not linked and verified with their UAN. Ensure 100% seeding.</p>
+    </div>
+
+    <div class="ad-container">
+        <div class="ad-header">
+            <h2 class="ad-title">🚀 BECOME A COMPLIANCE EXPERT</h2>
+            <p class="ad-subtitle">Professional Certificate in Labour Law Compliance (PCLLC)</p>
+        </div>
+
+        <p style="font-size: 14px; opacity: 0.9;">Stop guessing. Start mastering the legal framework of HR.</p>
+
+        <div class="ad-grid">
+            <div class="ad-card">
+                <h4>Mode</h4>
+                <p>100% Online</p>
+                <span style="font-size:12px">Flexbile Learning</span>
+            </div>
+            <div class="ad-card">
+                <h4>Duration</h4>
+                <p>2 Months</p>
+                <span style="font-size:12px">Own Pace</span>
+            </div>
+            <div class="ad-card">
+                <h4>Support</h4>
+                <p>Lifetime</p>
+                <span style="font-size:12px">Community Access</span>
+            </div>
+            <div class="ad-card">
+                <h4>Price</h4>
+                <p>₹7,500</p>
+                <span style="font-size:12px">Options Available</span>
+            </div>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <ul style="list-style: none; padding: 0; display: inline-block; text-align: left; color: #dcdcdc;">
+                <li>✅ Practical Aspects on PF/ESI Portals</li>
+                <li>✅ Handling Govt Notices & Inspections</li>
+                <li>✅ Salary Structuring as per New Wage Code</li>
+            </ul>
+        </div>
+
+        <div>
+            <a href="https://wa.me/918793933347?text=I'm%20interested%20in%20PCLLC%20Course" class="ad-cta-button">
+                👉 ENROLL NOW ON WHATSAPP
+            </a>
+        </div>
+        
+        <div class="limited-tag">BATCH CLOSING SOON</div>
+    </div>
+
+    <div class="footer">
+        Page 5 of 5 | © 2025 Industry Integrated Career Platform (IICP) | <strong>www.iicp.in</strong>
+    </div>
 
 </body>
 </html>
+```
